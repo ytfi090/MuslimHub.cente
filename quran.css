@@ -1,0 +1,179 @@
+/* ==========================
+   Quran Page Specific Styles
+========================== */
+
+/* Container adjustments for Quran page */
+.quran-container, #quran-content {
+  max-width: 960px;
+  margin: auto;
+  padding: 1rem;
+}
+
+/* Search box for surah list */
+#search-box {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+/* Surah list */
+.surah-list {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+  border-right: 1px solid #ccc;
+  padding-right: 0.5rem;
+}
+
+.surah-list button {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  margin: 0.2rem 0;
+  text-align: left;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--color-emerald-dark);
+  transition: 0.2s;
+  font-size: 1rem;
+}
+
+.surah-list button:hover {
+  background: #f0f0f0;
+  color: var(--color-gold);
+}
+
+.surah-list button.active {
+  background: var(--color-gold);
+  color: var(--color-emerald-dark);
+  font-weight: bold;
+}
+
+/* Dark mode for surah list */
+body[data-theme="dark"] .surah-list button {
+  color: #f5f5f5;
+}
+body[data-theme="dark"] .surah-list button:hover {
+  background: #333;
+  color: #ffc107;
+}
+body[data-theme="dark"] .surah-list button.active {
+  background: #ffd54f;
+  color: #121212;
+}
+
+/* Selected surah title */
+h2.surah-title {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-family: var(--font-arabic);
+  font-size: 2rem;
+  color: var(--color-emerald-dark);
+}
+body[data-theme="dark"] h2.surah-title {
+  color: var(--color-gold);
+}
+
+/* Verse container */
+.aya {
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: var(--color-white);
+  box-shadow: 0 3px 6px var(--color-shadow);
+}
+
+/* Dark mode verse container */
+body[data-theme="dark"] .aya {
+  background-color: #1e1e1e;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+}
+
+/* Arabic text */
+.aya .arabic {
+  font-family: var(--font-arabic);
+  font-size: 2rem; /* mobile */
+  text-align: right;
+  direction: rtl;
+  margin-bottom: 0.5rem;
+  color: var(--color-emerald-dark);
+}
+body[data-theme="dark"] .aya .arabic {
+  color: var(--color-gold);
+}
+
+/* Transliteration */
+.aya .transliteration {
+  font-style: italic;
+  text-align: right;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+body[data-theme="dark"] .aya .transliteration {
+  color: #ddd;
+}
+
+/* Translation */
+.aya .translation {
+  font-size: 1rem;
+  text-align: left;
+  color: #333;
+}
+body[data-theme="dark"] .aya .translation {
+  color: #ddd;
+}
+
+/* Back button */
+#back-btn {
+  display: none;
+  margin-bottom: 1rem;
+  background: var(--color-emerald-dark);
+  color: var(--color-white);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+#back-btn:hover {
+  background: var(--color-emerald-medium);
+}
+body[data-theme="dark"] #back-btn {
+  background: #333;
+  color: #ffd54f;
+}
+body[data-theme="dark"] #back-btn:hover {
+  background: #555;
+}
+
+/* Scrollbar for surah list */
+.surah-list::-webkit-scrollbar {
+  width: 8px;
+}
+.surah-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+.surah-list::-webkit-scrollbar-thumb {
+  background: var(--color-emerald-medium);
+  border-radius: 4px;
+}
+body[data-theme="dark"] .surah-list::-webkit-scrollbar-track {
+  background: #222;
+}
+body[data-theme="dark"] .surah-list::-webkit-scrollbar-thumb {
+  background: #00897b;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .aya .arabic { font-size: 3rem; }
+  .aya .transliteration { font-size: 1.2rem; }
+  .aya .translation { font-size: 1.1rem; }
+}
