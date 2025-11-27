@@ -1,27 +1,18 @@
-/* --- Color Palette and Global Reset --- */
-
+/* --- Modern Color Palette --- */
 :root {
-    /* Emerald Green and Gold Palette */
-    --color-emerald-dark: #004d40; /* Dark Emerald for Footer/Accents */
-    --color-emerald-medium: #00897b; /* Main Emerald Green */
-    --color-gold: #ffc107; /* Primary Gold Accent */
-    --color-gold-soft: #f4d03f; /* Soft Gold for Gradients */
-    --color-white: #ffffff;
-    --color-off-white: #f7f9fc; /* Body Background */
-    --color-text: #333333;
-    --color-shadow-soft: rgba(0, 0, 0, 0.08); /* Light Shadow for Cards */
-    --color-shadow-strong: rgba(0, 77, 64, 0.2); /* Emerald tint shadow on hover */
+    --primary-green: #00796b;        /* Emerald green */
+    --secondary-green: #004d40;      /* Darker green */
+    --accent-gold: #ffb300;          /* Gold accent */
+    --bg-light: #fdfdfd;             /* Light background */
+    --text-dark: #212121;            /* Primary text */
+    --text-light: #ffffff;           /* Light text */
+    --shadow: rgba(0,0,0,0.1);       /* Soft shadow */
 
-    /* Fonts (Must be linked in HTML head: Poppins and El Messiri) */
     --font-primary: 'Poppins', sans-serif;
     --font-arabic: 'El Messiri', 'Noto Kufi Arabic', serif;
-    
-    /* Global Styling */
-    --border-radius-lg: 30px;
-    --border-radius-md: 15px;
 }
 
-/* Base Reset & Typography */
+/* --- Base Reset --- */
 * {
     margin: 0;
     padding: 0;
@@ -30,12 +21,13 @@
 
 body {
     font-family: var(--font-primary);
-    color: var(--color-text);
-    background-color: var(--color-off-white);
+    background-color: var(--bg-light);
+    color: var(--text-dark);
     line-height: 1.6;
-    min-height: 100vh;
+    scroll-behavior: smooth;
 }
 
+/* --- Container --- */
 .container {
     width: 90%;
     max-width: 1200px;
@@ -43,446 +35,227 @@ body {
     padding: 2rem 0;
 }
 
-a {
-    text-decoration: none;
-    color: var(--color-emerald-medium);
-    transition: color 0.3s;
-}
-
-a:hover {
-    color: var(--color-gold);
-}
-
+/* --- Headings --- */
 h1, h2, h3 {
     font-weight: 700;
-}
-
-/* --- Global Components --- */
-
-/* Subtly Geometric Background for the entire page (matching the faint background in the mockup) */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* Subtle light green repeating pattern */
-    background: repeating-linear-gradient(
-        45deg,
-        rgba(0, 137, 123, 0.03),
-        rgba(0, 137, 123, 0.03) 10px,
-        transparent 10px,
-        transparent 20px
-    );
-    opacity: 0.5;
-    z-index: -1; /* Ensures content is on top */
+    color: var(--primary-green);
 }
 
 .section-title {
     text-align: center;
-    font-size: 1.8rem;
-    color: var(--color-emerald-dark);
-    margin-bottom: 2.5rem;
+    font-size: 2rem;
+    margin-bottom: 2rem;
     position: relative;
 }
 
 .section-title::after {
     content: '';
     display: block;
-    width: 60px;
+    width: 70px;
     height: 3px;
-    background-color: var(--color-gold);
+    background-color: var(--accent-gold);
     margin: 10px auto 0;
     border-radius: 5px;
 }
 
-.card {
-    background-color: var(--color-white);
-    border-radius: var(--border-radius-md);
-    padding: 2rem;
-    box-shadow: 0 8px 20px var(--color-shadow-soft);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 25px var(--color-shadow-strong);
-}
-
-.icon-gold {
-    color: var(--color-gold);
-}
-
 /* --- Buttons --- */
 .btn {
-    display: inline-block;
-    padding: 0.75rem 1.75rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.6rem;
     border-radius: 50px;
     font-weight: 600;
     text-transform: uppercase;
-    transition: all 0.3s;
-    font-size: 0.9rem;
-    border: none;
     cursor: pointer;
+    transition: 0.3s;
+    border: none;
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--color-gold), var(--color-gold-soft));
-    color: var(--color-emerald-dark);
-    box-shadow: 0 4px 10px rgba(255, 193, 7, 0.4);
+    background: linear-gradient(135deg, var(--accent-gold), #ffd54f);
+    color: var(--text-dark);
+    box-shadow: 0 4px 15px var(--shadow);
+}
+
+.btn-primary:hover {
+    transform: scale(1.05);
 }
 
 .btn-secondary {
-    background-color: transparent;
-    border: 2px solid var(--color-white);
-    color: var(--color-white);
+    border: 2px solid var(--accent-gold);
+    color: var(--accent-gold);
+    background: transparent;
 }
 
 .btn-secondary:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: var(--color-gold);
-    color: var(--color-gold);
+    background-color: var(--accent-gold);
+    color: var(--text-dark);
 }
 
-
-/* --- 1. Hero Section --- */
+/* --- Hero Section --- */
 .hero-section {
-    /* Gradient matching the mockup */
-    background: linear-gradient(150deg, var(--color-emerald-dark) 0%, var(--color-emerald-medium) 100%);
-    color: var(--color-white);
-    padding: 5rem 0 3rem;
-    border-bottom-left-radius: var(--border-radius-lg);
-    border-bottom-right-radius: var(--border-radius-lg);
+    background: linear-gradient(135deg, var(--secondary-green), var(--primary-green));
+    color: var(--text-light);
+    padding: 6rem 2rem 4rem;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    text-align: center;
     position: relative;
     overflow: hidden;
-    text-align: left; /* Aligned left in mockup */
 }
 
-/* Overlay for Mosque Silhouette / Geometric Pattern (Using a placeholder for the image) */
-.hero-section::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    /* This needs a real image (URL) of a dark, low-opacity mosque skyline */
-    background: url('path/to/mosque-silhouette.png') bottom right no-repeat,
-                repeating-linear-gradient(
-                    135deg,
-                    rgba(255, 255, 255, 0.05),
-                    rgba(255, 255, 255, 0.05) 8px,
-                    transparent 8px,
-                    transparent 16px
-                );
-    background-blend-mode: overlay;
-    background-size: cover;
-    opacity: 0.25;
-    z-index: 1;
+.hero-content .headline {
+    font-family: var(--font-arabic);
+    font-size: 3rem;
+    margin-bottom: 1rem;
 }
 
-.hero-content {
-    position: relative;
-    z-index: 2;
-    padding: 0 5%;
-}
-
-.headline {
-    font-size: 2.5rem; 
-    margin-bottom: 0.5rem;
-    font-family: var(--font-primary); /* Keeping the headline in Poppins for strong impact */
-    font-weight: 800;
-}
-
-.subtext {
-    font-size: 1rem;
-    margin-bottom: 2rem;
+.hero-content .subtext {
+    font-size: 1.2rem;
     opacity: 0.9;
+    margin-bottom: 2rem;
 }
 
-.hero-buttons {
-    display: flex;
-    gap: 1rem;
-}
-
-/* --- 2. Feature Cards Section --- */
-.feature-cards-section {
-    padding-top: 3rem;
-}
-
+/* --- Feature Cards --- */
 .cards-grid {
     display: grid;
-    grid-template-columns: 1fr; 
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
 }
 
 .feature-card {
-    text-align: left; /* Matching mockup */
-    padding: 1.5rem;
+    background: var(--text-light);
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 20px var(--shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px var(--shadow);
 }
 
 .feature-card i {
-    font-size: 2rem;
-    float: right; /* Icon positioned to the right of the text */
-    margin-left: 1rem;
-    /* Gold color with the requested soft emerald glow */
-    color: var(--color-gold);
-    text-shadow: 0 0 8px rgba(0, 137, 123, 0.8); 
+    font-size: 3rem;
+    color: var(--accent-gold);
+    margin-bottom: 1rem;
 }
 
-.feature-card h3 {
-    color: var(--color-emerald-dark);
-    margin-bottom: 0.25rem;
-    font-size: 1.25rem;
-}
-
-.feature-card p {
-    font-size: 0.9rem;
-    color: #666;
-}
-
-
-/* --- 3. Daily Ayah Section --- */
-.daily-ayah-section {
-    background-color: transparent;
+/* --- Daily Ayah & Hadith --- */
+.daily-ayah-section, .daily-hadith-section {
     text-align: center;
-    padding: 3rem 0;
+    padding: 4rem 1rem;
 }
 
-.ayah-card {
-    padding: 2.5rem;
-    max-width: 800px;
-    margin: 0 auto;
-    background-color: var(--color-white);
-    border-radius: var(--border-radius-md);
-    box-shadow: 0 5px 15px var(--color-shadow-soft);
+.ayah-card, .hadith-card {
+    background: var(--text-light);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px var(--shadow);
+    max-width: 700px;
+    margin: 1rem auto;
 }
 
 .ayah-arabic {
     font-family: var(--font-arabic);
-    font-size: 2.2rem;
-    color: var(--color-emerald-dark);
+    font-size: 2.5rem;
+    color: var(--primary-green);
+    line-height: 1.8;
     margin-bottom: 1rem;
-    line-height: 2;
 }
 
 .gold-divider {
     width: 80px;
-    height: 2px;
-    background-color: var(--color-gold);
-    margin: 1.5rem auto;
+    height: 3px;
+    background: var(--accent-gold);
+    margin: 1rem auto;
     border-radius: 5px;
 }
 
 .ayah-translation {
     font-style: italic;
     color: #555;
-    margin-bottom: 0.5rem;
-    font-size: 1rem;
-}
-
-cite {
-    font-size: 0.9rem;
-    color: #888;
-}
-
-/* --- 4. Daily Hadith Section --- */
-.daily-hadith-section {
-    padding-top: 0;
-}
-
-.hadith-card {
-    padding: 2.5rem;
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-    border: 1px solid rgba(0, 77, 64, 0.1);
-    background-color: var(--color-white);
-}
-
-.quote-icon {
-    font-size: 2.5rem;
-    position: absolute;
-    top: 15px;
-    left: 20px;
-    color: var(--color-gold);
-    opacity: 0.8;
 }
 
 .hadith-text {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-    padding-left: 4rem; /* Space for the quote icon */
-    font-style: italic;
-    color: #444;
+    font-size: 1.2rem;
+    padding-left: 3rem;
+    position: relative;
 }
 
-.hadith-card cite {
-    display: block;
-    text-align: right;
-    font-size: 0.9rem;
-    color: var(--color-emerald-medium);
+.quote-icon {
+    position: absolute;
+    font-size: 2rem;
+    color: var(--accent-gold);
+    left: 15px;
+    top: 15px;
 }
 
-/* --- 5. About MuslimHub.center --- */
+/* --- About Section --- */
 .about-section {
     text-align: center;
-    padding: 3rem 0;
-}
-
-.mission-text {
-    font-size: 1.1rem;
-    max-width: 800px;
-    margin: 0 auto 2rem;
-    color: #555;
+    padding: 4rem 1rem;
 }
 
 .mission-icons {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
-}
-
-.mission-item {
-    font-weight: 600;
-    color: var(--color-emerald-dark);
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
+    margin-top: 2rem;
 }
 
 .mission-item i {
-    color: var(--color-gold);
+    color: var(--accent-gold);
     margin-right: 0.5rem;
-    font-size: 1.2rem;
 }
 
-/* --- 6. Footer --- */
+/* --- Footer --- */
 .site-footer {
-    background-color: var(--color-emerald-dark);
-    color: var(--color-white);
-    padding-top: 3rem;
-    border-top-left-radius: var(--border-radius-lg);
-    border-top-right-radius: var(--border-radius-lg);
-    margin-top: 3rem;
+    background: var(--secondary-green);
+    color: var(--text-light);
+    padding: 3rem 1rem 2rem;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
 }
 
 .footer-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 2rem;
-    padding-bottom: 2rem;
+    margin-bottom: 2rem;
 }
 
 .footer-heading {
-    color: var(--color-gold);
-    font-size: 1.1rem;
-    margin-bottom: 0.75rem;
+    color: var(--accent-gold);
+    margin-bottom: 0.5rem;
 }
 
-.gold-thin-divider {
-    width: 40px;
-    height: 1px;
-    background-color: var(--color-gold);
-    margin-bottom: 1rem;
-}
-
-.site-footer ul {
-    list-style: none;
-    padding: 0;
-}
-
-.site-footer ul li a {
-    color: var(--color-white);
-    opacity: 0.8;
+.site-footer a {
+    color: var(--text-light);
     display: block;
-    padding: 0.3rem 0;
-    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s;
 }
 
-.site-footer ul li a:hover {
-    color: var(--color-gold);
-    opacity: 1;
+.site-footer a:hover {
+    color: var(--accent-gold);
 }
 
 .copyright {
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 1.5rem 0;
     text-align: center;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     opacity: 0.7;
 }
 
-/* --- Desktop / Tablet Responsive Adjustments --- */
-@media (min-width: 768px) {
-    .hero-section {
-        padding: 7rem 0 5rem;
-        text-align: center;
-    }
-    
-    .hero-content {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 0;
-    }
-
+/* --- Responsive --- */
+@media (max-width: 768px) {
     .headline {
-        font-size: 4rem; 
+        font-size: 2.5rem;
     }
-
-    .subtext {
-        font-size: 1.3rem;
-    }
-
-    .hero-buttons {
-        justify-content: center;
-    }
-
-    .cards-grid {
-        grid-template-columns: repeat(4, 1fr); 
-    }
-
-    .feature-card {
-        text-align: center;
-        padding: 2rem 1.5rem;
-    }
-    
-    .feature-card i {
-        float: none; 
-        margin: 0 0 0.75rem 0;
-    }
-    
-    .feature-card p {
-        font-size: 0.95rem;
-    }
-
     .ayah-arabic {
-        font-size: 3rem;
-    }
-    
-    .hadith-text {
-        padding-left: 0;
-        padding-right: 0;
-        font-size: 1.2rem;
-        text-align: center;
-        max-width: 700px;
-        margin: 0 auto 1rem;
-    }
-    
-    .quote-icon {
-        top: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 3rem;
-    }
-    
-    .hadith-card cite {
-        text-align: center;
-    }
-
-    .footer-grid {
-        grid-template-columns: repeat(4, 1fr); 
+        font-size: 2rem;
     }
 }
