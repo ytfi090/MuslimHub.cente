@@ -16,6 +16,11 @@
 </head>
 <body>
 
+    <!-- DARK MODE TOGGLE BUTTON -->
+    <button id="dark-mode-toggle" class="btn btn-secondary" style="position: fixed; top: 20px; right: 20px; z-index: 1000;">
+        🌙 Dark Mode
+    </button>
+
     <!-- HERO SECTION -->
     <header class="hero-section">
         <div class="hero-content container">
@@ -59,31 +64,31 @@
     </section>
 
     <!-- DAILY AYAH -->
-<section class="daily-ayah-section container" id="quran">
-    <h2 class="section-title">Daily Qur’an Reflection</h2>
-    <div class="ayah-card">
-        <p class="ayah-arabic" id="daily-ayah-arabic"></p>
-        <div class="gold-divider"></div>
-        <p class="ayah-translation" id="daily-ayah-translation"></p>
-        <cite id="daily-ayah-cite"></cite>
-    </div>
-</section>
+    <section class="daily-ayah-section container" id="quran">
+        <h2 class="section-title">Daily Qur’an Reflection</h2>
+        <div class="ayah-card">
+            <p class="ayah-arabic" id="daily-ayah-arabic"></p>
+            <div class="gold-divider"></div>
+            <p class="ayah-translation" id="daily-ayah-translation"></p>
+            <cite id="daily-ayah-cite"></cite>
+        </div>
+    </section>
 
-<!-- DAILY HADITH -->
-<section class="daily-hadith-section container">
-    <h2 class="section-title">Daily Hadith</h2>
-    <div class="hadith-card">
-        <i class="fa-solid fa-quote-left quote-icon"></i>
-        <p class="hadith-text" id="daily-hadith-text"></p>
-        <cite id="daily-hadith-cite"></cite>
-    </div>
-</section>
+    <!-- DAILY HADITH -->
+    <section class="daily-hadith-section container">
+        <h2 class="section-title">Daily Hadith</h2>
+        <div class="hadith-card">
+            <i class="fa-solid fa-quote-left quote-icon"></i>
+            <p class="hadith-text" id="daily-hadith-text"></p>
+            <cite id="daily-hadith-cite"></cite>
+        </div>
+    </section>
 
     <!-- ABOUT -->
     <section class="about-section container">
         <h2 class="section-title">About MuslimHub.center</h2>
         <p class="mission-text">
-            MuslimHub.center aims to help Muslims and new learners understand Islam through authentic, simple, and trustworthy resources based on the Qur’an and Sunnah.
+            MuslimHub.center helps Muslims and new learners understand Islam through authentic, simple, and trustworthy resources based on the Qur’an and Sunnah.
         </p>
         <div class="mission-icons">
             <div class="mission-item"><i class="fa-solid fa-check"></i> Authentic</div>
@@ -137,38 +142,55 @@
         </div>
     </footer>
 
+    <!-- JS: Dark Mode + Daily Qur’an & Hadith -->
     <script>
-    // Array of Qur'an verses
-    const quranVerses = [
-        { arabic: "وَمَا أَرْسَلْنَاكَ إِلَّا رَحْمَةً لِلْعَالَمِينَ", translation: "And We have not sent you, [O Muhammad], except as a mercy to the worlds.", cite: "Surah Al-Anbiya 21:107" },
-        { arabic: "اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ", translation: "Guide us to the straight path.", cite: "Surah Al-Fatihah 1:6" },
-        { arabic: "أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ", translation: "Indeed, in the remembrance of Allah do hearts find rest.", cite: "Surah Ar-Ra’d 13:28" },
-        // Add more verses here
-    ];
+        const toggleBtn = document.getElementById('dark-mode-toggle');
+        const body = document.body;
 
-    // Array of Hadiths
-    const hadiths = [
-        { text: "The best among you are those who learn the Qur'an and teach it.", cite: "Prophet Muhammad ﷺ — Bukhari" },
-        { text: "The most beloved of deeds to Allah are those which are done regularly, even if they are small.", cite: "Prophet Muhammad ﷺ — Muslim" },
-        { text: "Whoever believes in Allah and the Last Day, should speak good or remain silent.", cite: "Prophet Muhammad ﷺ — Bukhari" },
-        // Add more hadiths here
-    ];
+        // Load saved theme
+        if(localStorage.getItem('theme') === 'dark'){
+            body.setAttribute('data-theme', 'dark');
+            toggleBtn.textContent = "☀ Light Mode";
+        }
 
-    // Get today's date as a number
-    const today = new Date();
-    const dayOfYear = Math.floor((today - new Date(today.getFullYear(),0,0)) / 1000 / 60 / 60 / 24);
+        // Dark mode toggle
+        toggleBtn.addEventListener('click', () => {
+            if(body.getAttribute('data-theme') === 'dark'){
+                body.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                toggleBtn.textContent = "🌙 Dark Mode";
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                toggleBtn.textContent = "☀ Light Mode";
+            }
+        });
 
-    // Select daily Qur’an verse
-    const verseIndex = dayOfYear % quranVerses.length;
-    document.getElementById('daily-ayah-arabic').textContent = quranVerses[verseIndex].arabic;
-    document.getElementById('daily-ayah-translation').textContent = quranVerses[verseIndex].translation;
-    document.getElementById('daily-ayah-cite').textContent = quranVerses[verseIndex].cite;
+        // Daily Qur’an and Hadith
+        const quranVerses = [
+            { arabic: "وَمَا أَرْسَلْنَاكَ إِلَّا رَحْمَةً لِلْعَالَمِينَ", translation: "And We have not sent you, [O Muhammad], except as a mercy to the worlds.", cite: "Surah Al-Anbiya 21:107" },
+            { arabic: "اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ", translation: "Guide us to the straight path.", cite: "Surah Al-Fatihah 1:6" },
+            { arabic: "أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ", translation: "Indeed, in the remembrance of Allah do hearts find rest.", cite: "Surah Ar-Ra’d 13:28" },
+        ];
 
-    // Select daily Hadith
-    const hadithIndex = dayOfYear % hadiths.length;
-    document.getElementById('daily-hadith-text').textContent = hadiths[hadithIndex].text;
-    document.getElementById('daily-hadith-cite').textContent = hadiths[hadithIndex].cite;
-</script>
+        const hadiths = [
+            { text: "The best among you are those who learn the Qur'an and teach it.", cite: "Prophet Muhammad ﷺ — Bukhari" },
+            { text: "The most beloved of deeds to Allah are those which are done regularly, even if they are small.", cite: "Prophet Muhammad ﷺ — Muslim" },
+            { text: "Whoever believes in Allah and the Last Day, should speak good or remain silent.", cite: "Prophet Muhammad ﷺ — Bukhari" },
+        ];
+
+        const today = new Date();
+        const dayOfYear = Math.floor((today - new Date(today.getFullYear(),0,0)) / 1000 / 60 / 60 / 24);
+
+        const verseIndex = dayOfYear % quranVerses.length;
+        document.getElementById('daily-ayah-arabic').textContent = quranVerses[verseIndex].arabic;
+        document.getElementById('daily-ayah-translation').textContent = quranVerses[verseIndex].translation;
+        document.getElementById('daily-ayah-cite').textContent = quranVerses[verseIndex].cite;
+
+        const hadithIndex = dayOfYear % hadiths.length;
+        document.getElementById('daily-hadith-text').textContent = hadiths[hadithIndex].text;
+        document.getElementById('daily-hadith-cite').textContent = hadiths[hadithIndex].cite;
+    </script>
 
 </body>
 </html>
