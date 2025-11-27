@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MuslimHub.center — Qur’an Reader</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=El+Messiri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body[data-theme="dark"] { background: #121212; color: #f5f5f5; }
+  body[data-theme="dark"] .surah-list button { color: #f5f5f5; }
+  body[data-theme="dark"] .surah-list button:hover { background: #333; }
+  .container { max-width: 960px; margin: auto; padding: 1rem; }
+  #search-box { width: 100%; padding: 0.5rem; margin-bottom: 1rem; border-radius: 5px; border: 1px solid #ccc; }
+  .surah-list { max-height: 300px; overflow-y: auto; margin-bottom: 1rem; border-right: 1px solid #ccc; padding-right: 0.5rem; }
+  .surah-list button { display: block; width: 100%; padding: 0.5rem; margin: 0.2rem 0; text-align: left; border: none; background: none; cursor: pointer; color: #004d40; transition: 0.2s; }
+  .surah-list button:hover { background: #f0f0f0; color: #ffc107; }
+  .aya { margin: 1rem 0; }
+  .aya .arabic { font-family: 'El Messiri', serif; font-size: 1.8rem; text-align: right; direction: rtl; margin-bottom: 0.5rem; color: #004d40; }
+  .aya .transliteration { font-style: italic; color: #555; margin-bottom: 0.5rem; }
+  .aya .translation { font-size: 1rem; color: #333; }
+  body[data-theme="dark"] .aya .arabic { color: #ffd54f; }
+  body[data-theme="dark"] .aya .transliteration, body[data-theme="dark"] .aya .translation { color: #ddd; }
+  #dark-mode-toggle { position: fixed; top: 20px; right: 20px; z-index: 1000; }
+</style>
+</head>
+<body>
+
+<button id="dark-mode-toggle" class="btn btn-secondary">🌙 Dark Mode</button>
+
+<div class="container">
+  <h1>Qur’an Reader</h1>
+  <input type="text" id="search-box" placeholder="Search surah by name or transliteration...">
+  <div class="surah-list" id="surah-list"></div>
+  <div id="quran-content"></div>
+</div>
+
+<script>
+const toggleBtn = document.getElementById('dark-mode-toggle');
+const body = document.body;
+
+function setTheme(t) {
+  if(t==='dark') {
+    body.setAttribute('data-theme','dark');
+    toggleBtn.textContent='☀ Light Mode';
+  } else {
+    body.removeAttribute('data-theme');
+    toggleBtn.textContent='🌙 Dark Mode';
+  }
+  localStorage.setItem('theme', t);
+}
+
+const saved = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+setTheme(saved);
+
+toggleBtn.addEventListener('click',()=>setTheme(body.getAttribute('data-theme')==='dark'?'light':'dark'));
+
+// Load Quran JSON
+let quranData = null;
+async function loadQuran() {
+  if(quranData) return quranData;
+  const resp = await fetch('https://cdn.jsdelivr.net/npm/quran-json@3.1.2/dist/quran.json');
+  quranData = await resp.json();
+  return quranData;
+}
+
+// Populate surah list
+async function showSurahList() {
+  const quran = await loadQuran();
+  const list = document.getElementById('surah-list');
+  list.innerHTML = '';
+  quran.chapters.forEach(ch => {
+    const btn = document.createElement('button');
+    btn.textContent = `${ch.id}. ${ch.transliteration} — ${ch.name}`;
+    btn.addEventListener('click',()=>showSurah(ch.id));
+    list.appendChild(btn);
+  });
+}
+
+// Render surah
+async function showSurah(id) {
+  const quran = await loadQuran();
+  const chapter = quran.chapters[id-1];
+  const content = document.getElementById('quran-content');
+  content.innerHTML = `<h2>${chapter.transliteration} — ${chapter.name}</h2>`;
+  chapter.verses.forEach(v => {
+    const div = document.createElement('div'); div.className='aya';
+    const arabic = document.createElement('p'); arabic.className='arabic'; arabic.textContent=v.text_ar;
+    const translit = document.createElement('p'); translit.className='transliteration'; translit.textContent=v.transliteration || '';
+    const trans = document.createElement('p'); trans.className='translation'; trans.textContent=v.translation.en || '';
+    div.append(arabic, translit, trans);
+    content.appendChild(div);
+  });
+}
+
+// Search functionality
+document.getElementById('search-box').addEventListener('input', async function(){
+  const query = this.value.toLowerCase();
+  const quran = await loadQuran();
+  const list = document.getElementById('surah-list');
+  list.innerHTML = '';
+  quran.chapters.forEach(ch => {
+    if(ch.name.toLowerCase().includes(query) || ch.transliteration.toLowerCase().includes(query)){
+      const btn = document.createElement('button');
+      btn.textContent = `${ch.id}. ${ch.transliteration} — ${ch.name}`;
+      btn.addEventListener('click',()=>showSurah(ch.id));
+      list.appendChild(btn);
+    }
+  });
+});
+
+// Initialize
+(async ()=>{
+  await showSurahList();
+  showSurah(1); // Load Al-Fatihah by default
+})();
+</script>
+
+</body>
+</html>
