@@ -3,114 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MuslimHub.center | Learn Islam With Clarity</title>
+    <title>MuslimHub.center – Learn Islam Easily</title>
+
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=El+Messiri:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
+    <!-- HERO SECTION -->
     <header class="hero-section">
-        <div class="hero-content">
-            <h1 class="headline">Learn Islam With Clarity</h1>
-            <p class="subtext">Your hub for Qur’an, Salah, Dhikr, and Islamic knowledge</p>
+        <div class="hero-content container">
+            <h1 class="headline">MuslimHub.center</h1>
+            <p class="subtext">Your center for Qur’an, Salah, Dhikr, and authentic Islamic learning</p>
             <div class="hero-buttons">
-                <a href="#ai-assistant" class="btn btn-primary"><i class="fas fa-robot"></i> Ask the AI</a>
+                <a href="#ai" class="btn btn-primary"><i class="fas fa-robot"></i> Ask the AI</a>
                 <a href="#quran" class="btn btn-secondary"><i class="fas fa-book-open"></i> Read Qur’an</a>
             </div>
         </div>
     </header>
 
-    <main>
-        <section class="feature-cards-section container">
-            <h2 class="section-title">Essential Resources</h2>
-            <div class="cards-grid">
-                <div class="card feature-card glow-border">
-                    <i class="fas fa-quran icon-gold"></i>
-                    <h3>📖 Qur’an</h3>
-                    <p>Arabic, translation, transliteration, and audio player</p>
-                </div>
-
-                <div class="card feature-card glow-border">
-                    <i class="fas fa-brain icon-gold"></i>
-                    <h3>🤖 Islamic AI Assistant</h3>
-                    <p>Chatbot that answers questions using Qur’an & Sunnah</p>
-                </div>
-
-                <div class="card feature-card glow-border">
-                    <i class="fas fa-mosque icon-gold"></i>
-                    <h3>🕌 Learn Salah</h3>
-                    <p>Step-by-step wudu & salah guide</p>
-                </div>
-
-                <div class="card feature-card glow-border">
-                    <i class="fas fa-hands-sparkle icon-gold"></i>
-                    <h3>✨ Dhikr & Reminders</h3>
-                    <p>Morning/evening adhkar and 99 Names of Allah</p>
-                </div>
+    <!-- FEATURE CARDS -->
+    <section class="feature-cards-section container">
+        <h2 class="section-title">Explore the Hub</h2>
+        <div class="cards-grid">
+            <div class="card glow-border feature-card">
+                <i class="fa-solid fa-book-quran icon-gold"></i>
+                <h3>Qur’an</h3>
+                <p>Read Arabic text, English translation, and transliteration with audio recitation.</p>
             </div>
-        </section>
 
-        <section class="daily-ayah-section container">
-            <h2 class="section-title">Daily Qur’an Reflection</h2>
-            <div class="ayah-card">
-                <p class="ayah-arabic">وَتَوَكَّلْ عَلَى ٱلْحَىِّ ٱلَّذِى لَا يَمُوتُ</p>
-                <div class="gold-divider"></div>
-                <p class="ayah-translation">And rely upon the Ever-Living who does not die.</p>
-                <cite>(Surah Al-Furqan, 25:58)</cite>
+            <div class="card glow-border feature-card">
+                <i class="fa-solid fa-robot icon-gold"></i>
+                <h3>AI Chatbot</h3>
+                <p>Ask questions about Islam using Qur’an & Sunnah guidance.</p>
             </div>
-        </section>
 
-        <section class="daily-hadith-section container">
-            <div class="hadith-card card">
-                <i class="fas fa-quote-left icon-gold quote-icon"></i>
-                <p class="hadith-text">
-                    "The Prophet (peace be upon him) said, 'The best among you are those who learn the Qur'an and teach it.'"
-                </p>
-                <cite>— Sahih al-Bukhari</cite>
+            <div class="card glow-border feature-card">
+                <i class="fa-solid fa-mosque icon-gold"></i>
+                <h3>Learn Salah</h3>
+                <p>Step-by-step guide to wudu and prayers for all levels.</p>
             </div>
-        </section>
 
-        <section class="about-section container">
-            <h2 class="section-title">About MuslimHub.center</h2>
-            <p class="mission-text">
-                Our goal is to help Muslims and new learners understand Islam through **authentic, simple, and trustworthy resources** based on Qur’an and Sunnah.
-            </p>
-            <div class="mission-icons">
-                <div class="mission-item"><i class="fas fa-check-circle"></i>Authentic</div>
-                <div class="mission-item"><i class="fas fa-star-of-david"></i>Simple</div>
-                <div class="mission-item"><i class="fas fa-hands-helping"></i>Trustworthy</div>
+            <div class="card glow-border feature-card">
+                <i class="fa-solid fa-star-and-crescent icon-gold"></i>
+                <h3>Dhikr</h3>
+                <p>Morning/evening adhkar and 99 Names of Allah for daily remembrance.</p>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
+    <!-- DAILY AYAH -->
+<section class="daily-ayah-section container" id="quran">
+    <h2 class="section-title">Daily Qur’an Reflection</h2>
+    <div class="ayah-card">
+        <p class="ayah-arabic" id="daily-ayah-arabic"></p>
+        <div class="gold-divider"></div>
+        <p class="ayah-translation" id="daily-ayah-translation"></p>
+        <cite id="daily-ayah-cite"></cite>
+    </div>
+</section>
+
+<!-- DAILY HADITH -->
+<section class="daily-hadith-section container">
+    <h2 class="section-title">Daily Hadith</h2>
+    <div class="hadith-card">
+        <i class="fa-solid fa-quote-left quote-icon"></i>
+        <p class="hadith-text" id="daily-hadith-text"></p>
+        <cite id="daily-hadith-cite"></cite>
+    </div>
+</section>
+
+    <!-- ABOUT -->
+    <section class="about-section container">
+        <h2 class="section-title">About MuslimHub.center</h2>
+        <p class="mission-text">
+            MuslimHub.center aims to help Muslims and new learners understand Islam through authentic, simple, and trustworthy resources based on the Qur’an and Sunnah.
+        </p>
+        <div class="mission-icons">
+            <div class="mission-item"><i class="fa-solid fa-check"></i> Authentic</div>
+            <div class="mission-item"><i class="fa-solid fa-check"></i> Easy to Learn</div>
+            <div class="mission-item"><i class="fa-solid fa-check"></i> Modern</div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer class="site-footer">
-        <div class="footer-grid container">
+        <div class="container footer-grid">
             <div class="footer-col">
-                <h4 class="footer-heading">Resources</h4>
+                <h4 class="footer-heading">Qur’an</h4>
                 <div class="gold-thin-divider"></div>
                 <ul>
-                    <li><a href="#quran">Qur’an</a></li>
-                    <li><a href="#salah">Salah Guide</a></li>
-                    <li><a href="#dhikr">Dhikr</a></li>
-                    <li><a href="#ai-assistant">AI Chatbot</a></li>
+                    <li><a href="#quran">Read Qur’an</a></li>
+                    <li><a href="#">Surah List</a></li>
                 </ul>
             </div>
+
             <div class="footer-col">
-                <h4 class="footer-heading">Hub</h4>
+                <h4 class="footer-heading">Salah</h4>
                 <div class="gold-thin-divider"></div>
                 <ul>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="#privacy">Privacy</a></li>
-                    <li><a href="#terms">Terms</a></li>
+                    <li><a href="#">Learn Salah</a></li>
+                    <li><a href="#">Wudu Guide</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">Dhikr</h4>
+                <div class="gold-thin-divider"></div>
+                <ul>
+                    <li><a href="#">Morning Dhikr</a></li>
+                    <li><a href="#">Evening Dhikr</a></li>
+                    <li><a href="#">99 Names of Allah</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">AI Chatbot</h4>
+                <div class="gold-thin-divider"></div>
+                <ul>
+                    <li><a href="#ai">Ask the AI</a></li>
                 </ul>
             </div>
         </div>
+
         <div class="copyright">
-            <p>&copy; 2024 MuslimHub.center. All Rights Reserved. Based on Qur'an and Sunnah.</p>
+            © 2025 MuslimHub.center — All Rights Reserved
         </div>
     </footer>
+
+    <script>
+    // Array of Qur'an verses
+    const quranVerses = [
+        { arabic: "وَمَا أَرْسَلْنَاكَ إِلَّا رَحْمَةً لِلْعَالَمِينَ", translation: "And We have not sent you, [O Muhammad], except as a mercy to the worlds.", cite: "Surah Al-Anbiya 21:107" },
+        { arabic: "اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ", translation: "Guide us to the straight path.", cite: "Surah Al-Fatihah 1:6" },
+        { arabic: "أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ", translation: "Indeed, in the remembrance of Allah do hearts find rest.", cite: "Surah Ar-Ra’d 13:28" },
+        // Add more verses here
+    ];
+
+    // Array of Hadiths
+    const hadiths = [
+        { text: "The best among you are those who learn the Qur'an and teach it.", cite: "Prophet Muhammad ﷺ — Bukhari" },
+        { text: "The most beloved of deeds to Allah are those which are done regularly, even if they are small.", cite: "Prophet Muhammad ﷺ — Muslim" },
+        { text: "Whoever believes in Allah and the Last Day, should speak good or remain silent.", cite: "Prophet Muhammad ﷺ — Bukhari" },
+        // Add more hadiths here
+    ];
+
+    // Get today's date as a number
+    const today = new Date();
+    const dayOfYear = Math.floor((today - new Date(today.getFullYear(),0,0)) / 1000 / 60 / 60 / 24);
+
+    // Select daily Qur’an verse
+    const verseIndex = dayOfYear % quranVerses.length;
+    document.getElementById('daily-ayah-arabic').textContent = quranVerses[verseIndex].arabic;
+    document.getElementById('daily-ayah-translation').textContent = quranVerses[verseIndex].translation;
+    document.getElementById('daily-ayah-cite').textContent = quranVerses[verseIndex].cite;
+
+    // Select daily Hadith
+    const hadithIndex = dayOfYear % hadiths.length;
+    document.getElementById('daily-hadith-text').textContent = hadiths[hadithIndex].text;
+    document.getElementById('daily-hadith-cite').textContent = hadiths[hadithIndex].cite;
+</script>
 
 </body>
 </html>
